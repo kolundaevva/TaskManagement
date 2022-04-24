@@ -126,7 +126,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="checkmark" destination="JBb-9q-knY" id="VIj-QI-pXQ"/>
-                                            <outlet property="descriptionLabel" destination="X6R-Yl-hZT" id="qcX-T3-EL8"/>
+                                            <outlet property="definitionLabel" destination="X6R-Yl-hZT" id="qcX-T3-EL8"/>
                                             <outlet property="timeLabel" destination="ITW-IF-sko" id="Pek-s1-Rdj"/>
                                             <outlet property="titleLabel" destination="Vps-D0-J0v" id="Xdr-ev-2Vw"/>
                                         </connections>

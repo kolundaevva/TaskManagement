@@ -21,7 +21,6 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(SupportManager.fetchCurrentWeek())
         tasks = realm.objects(Task.self)
         self.collectionVew.delegate = self
         self.collectionVew.dataSource = self

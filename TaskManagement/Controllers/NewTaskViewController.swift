@@ -23,10 +23,7 @@ class NewTaskViewController: UITableViewController {
         saveButton.isEnabled = false
         taskTitleLabel.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         setupEditScreen()
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        view.endEditing(true)
+        initTF()
     }
     
     @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
@@ -71,17 +68,26 @@ class NewTaskViewController: UITableViewController {
 //MARK: Text Field Delegate
 
 extension NewTaskViewController: UITextFieldDelegate {
-  
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
-  }
-  
-  @objc private func textFieldChanged() {
-    if taskTitleLabel.text?.isEmpty == false {
-      saveButton.isEnabled = true
-    } else {
-      saveButton.isEnabled = false
+    
+    private func initTF() {
+        self.taskTitleLabel.delegate = self
+        self.taskDefinitionLabel.delegate = self
     }
-  }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc private func textFieldChanged() {
+        if taskTitleLabel.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
