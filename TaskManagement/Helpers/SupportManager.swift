@@ -9,23 +9,20 @@ import Foundation
 
 class SupportManager {
     static var currentDay: Date = Date()
-    static var currentWeek: [Date] = []
     
     static func fetchCurrentWeek() -> [Date] {
-        let today = Date()
-        let calendar = Calendar.current
-        
-        let week = calendar.dateInterval(of: .weekOfMonth, for: today)
-        
-        guard let firstWeekDay = week?.start else { fatalError() }
-        
-        (1...7).forEach { day in
-            if let weekDay = calendar.date(byAdding: .day, value: day, to: firstWeekDay) {
-                currentWeek.append(weekDay)
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.firstWeekday = 2
+        let today = calendar.startOfDay(for: Date())
+        var week = [Date]()
+        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: today) {
+            for i in 0...6 {
+                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                    week += [day]
+                }
             }
         }
-        
-        return currentWeek
+        return week
     }
     
     static func extaractDate(date: Date, format: String) -> String {

@@ -31,7 +31,7 @@ extension TaskViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomCollectionViewCell else { fatalError() }
         cell.view.backgroundColor = .systemGray6
         SupportManager.currentDay = currentWeek[indexPath.row]
-        //Попробовать добавить анимацию перехода
+        //Попробовать добавить свайп
         collectionView.reloadData()
         filter()
     }

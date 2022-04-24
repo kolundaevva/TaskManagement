@@ -35,6 +35,9 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let newTaskVC = storyboard.instantiateViewController(withIdentifier: "NewTaskVC") as? NewTaskViewController else { return }
             newTaskVC.currentTask = task
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
             self?.show(newTaskVC, sender: nil)
         }
         
