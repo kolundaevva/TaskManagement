@@ -20,7 +20,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func configuartion(with day: Date) {
         view.backgroundColor = SupportManager.isCurrentDay(day: day) ? .systemGray6 : .systemGray
-        
         dayName.text = SupportManager.extaractDate(date: day, format: "EEE")
         dayNumber.text = SupportManager.extaractDate(date: day, format: "dd")
     }

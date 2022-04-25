@@ -30,6 +30,10 @@ class NewTaskViewController: UITableViewController {
         dismiss(animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func saveTask() {
         let newTask = Task(title: taskTitleLabel.text!, definition: taskDefinitionLabel.text, time: taskDatePicker.date)
         
@@ -45,6 +49,8 @@ class NewTaskViewController: UITableViewController {
     }
     
     private func setupEditScreen() {
+        tableView.separatorStyle = .none
+        
         if currentTask != nil {
             setupNavigationBar()
             taskTitleLabel.text = currentTask?.title
